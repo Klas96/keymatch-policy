@@ -3,59 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeyMatch Safety Standards</title>
-    <meta http-equiv="refresh" content="0; url=child-safety-standards.html">
+    <title>Key Match - Connect with Confidence</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            text-align: center;
-            padding: 2em;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #D8EEDD 0%, #E8F5E8 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+            line-height: 1.6;
         }
+
         .container {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
         }
-        .loading {
-            color: #6c757d;
-            margin: 2em 0;
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
         }
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #3498db;
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.15);
+            transition: transform 0.3s ease;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
-        .link {
-            color: #3498db;
+
+        h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: #5a6c7d;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .app-description {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .app-description h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .app-description p {
+            color: #5a6c7d;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .features li {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features li:before {
+            content: "🔑";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .cta-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .app-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 1rem 2.5rem;
             text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
         }
-        .link:hover {
-            text-decoration: underline;
+
+        .app-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+            background: linear-gradient(135deg, #45a049 0%, #4CAF50 100%);
+        }
+
+        .legal-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
+            backdrop-filter: blur(10px);
+            margin-top: 2rem;
+        }
+
+        .legal-section h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .legal-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .legal-link {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .legal-link:hover {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            border-color: #4CAF50;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.1);
+        }
+
+        .legal-link h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .legal-link p {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem 0;
+            color: #6c757d;
+            border-top: 1px solid rgba(44, 62, 80, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .legal-links {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>KeyMatch Safety Standards</h1>
-        <div class="loading">
-            <div class="spinner"></div>
-            <p>Redirecting to Child Safety Standards...</p>
+        <header>
+            <img src="Key-match-icon-key.jpg" alt="Key Match Logo" class="logo">
+            <h1>Key Match</h1>
+            <p class="tagline">Connect with Confidence</p>
+        </header>
+
+        <div class="main-content">
+            <div class="app-description">
+                <h2>About Key Match</h2>
+                <p>Key Match is a unique connection app that matches people based on keywords. Share your interests, hobbies, goals, or any keywords that represent who you are, and discover others who share similar keywords.</p>
+                
+                <p>Our keyword-based matching system helps you find connections through shared interests, experiences, or aspirations. Simply add keywords to your profile and let Key Match find people who share your keywords.</p>
+                
+                <ul class="features">
+                    <li>Keyword-based matching system</li>
+                    <li>Share interests and hobbies as keywords</li>
+                    <li>Discover people with similar keywords</li>
+                    <li>Simple and intuitive keyword profiles</li>
+                    <li>Connect through shared interests</li>
+                </ul>
+            </div>
+
+            <div class="cta-section">
+                <h2>Get Started Today</h2>
+                <p>Join thousands of users who have found meaningful connections through Key Match.</p>
+                <a href="#" class="app-button">Download Key Match</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">
+                    Available on iOS and Android
+                </p>
+            </div>
         </div>
-        <p>If you are not redirected automatically, <a href="child-safety-standards.html" class="link">click here</a>.</p>
-        <hr>
-        <p><small>This document contains our externally published standards against sexual abuse and exploitation of children.</small></p>
+
+        <div class="legal-section">
+            <h2>Legal Information</h2>
+            <p style="text-align: center; color: #6c757d; margin-bottom: 2rem;">
+                Please review our legal documents to understand your rights and our commitment to your safety and privacy.
+            </p>
+            
+            <div class="legal-links">
+                <a href="child-safety-standards.html" class="legal-link">
+                    <h3>Child Safety Standards</h3>
+                    <p>Our comprehensive standards against sexual abuse and exploitation of children</p>
+                </a>
+                
+                <a href="privacy-policy.html" class="legal-link">
+                    <h3>Privacy Policy</h3>
+                    <p>How we collect, use, and protect your personal information</p>
+                </a>
+                
+                <a href="terms.html" class="legal-link">
+                    <h3>Terms & Conditions</h3>
+                    <p>Terms of service and user agreement for Key Match</p>
+                </a>
+                
+                <a href="policy.html" class="legal-link">
+                    <h3>App Policy</h3>
+                    <p>Additional policies and guidelines for using Key Match</p>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built with ❤️ for meaningful connections</p>
+        </footer>
     </div>
 </body>
 </html> 
