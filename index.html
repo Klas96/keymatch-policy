@@ -13,93 +13,267 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #D8EEDD 0%, #E8F5E8 100%);
-            min-height: 100vh;
-            color: #2c3e50;
-            line-height: 1.6;
+        :root {
+            --primary-green: #4CAF50;
+            --dark-green: #2E7D32;
+            --light-green: #D8EEDD;
+            --dark-text: #2c3e50;
+            --light-text: #5a6c7d;
+            --accent-purple: #9C27B0;
+            --accent-blue: #2196F3;
+            --accent-orange: #ffc107;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--light-green) 0%, #E8F5E8 100%);
+            min-height: 100vh;
+            color: var(--dark-text);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-green);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
 
-        header {
+        /* Hero Section */
+        .hero {
             text-align: center;
+            padding: 4rem 2rem;
             margin-bottom: 3rem;
-            padding: 2rem 0;
-            position: relative;
-        }
-        
-        .beta-badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #2c3e50;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-top: 0.5rem;
-            box-shadow: 0 2px 10px rgba(255, 193, 7, 0.3);
         }
 
         .logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1.5rem;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 2rem;
             border-radius: 50%;
-            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.15);
+            box-shadow: 0 10px 40px rgba(76, 175, 80, 0.3);
             transition: transform 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .logo:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
+        }
+
+        .beta-badge {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         h1 {
-            font-size: 3rem;
-            color: #2c3e50;
+            font-size: 3.5rem;
+            color: var(--dark-text);
             margin-bottom: 1rem;
-            font-weight: 300;
+            font-weight: 700;
             letter-spacing: -1px;
         }
 
         .tagline {
-            font-size: 1.3rem;
-            color: #5a6c7d;
+            font-size: 1.5rem;
+            color: var(--light-text);
             margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .app-description {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .app-description h2 {
-            color: #2c3e50;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
             font-weight: 400;
         }
 
-        .app-description p {
-            color: #5a6c7d;
-            font-size: 1.1rem;
+        /* Presentation Hero Section */
+        .presentation-hero {
+            background: linear-gradient(135deg, var(--accent-purple) 0%, #7B1FA2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 30px;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 60px rgba(156, 39, 176, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .presentation-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .presentation-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .presentation-hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .presentation-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .presentation-button {
+            display: inline-block;
+            background: white;
+            color: var(--accent-purple);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .presentation-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .presentation-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(44, 62, 80, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(44, 62, 80, 0.15);
+        }
+
+        .card h2 {
+            color: var(--dark-text);
+            font-size: 2rem;
             margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h2::before {
+            content: '';
+            width: 4px;
+            height: 2rem;
+            background: var(--primary-green);
+            border-radius: 2px;
         }
 
         .features {
@@ -108,73 +282,100 @@
         }
 
         .features li {
-            color: #2c3e50;
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
             position: relative;
+            font-size: 1.05rem;
         }
 
         .features li:before {
-            content: "🔑";
+            content: "✓";
             position: absolute;
             left: 0;
             top: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
-        .cta-section {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
-            backdrop-filter: blur(10px);
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 25px;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 60px rgba(76, 175, 80, 0.3);
+        }
+
+        .download-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
             text-align: center;
         }
 
-        .cta-section h2 {
-            color: #2c3e50;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
-
-        .app-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-            color: white;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 1rem 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
-        }
-
-        .app-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
-            background: linear-gradient(135deg, #45a049 0%, #4CAF50 100%);
-        }
-
-        .legal-section {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
-            backdrop-filter: blur(10px);
+        .download-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
             margin-top: 2rem;
         }
 
-        .legal-section h2 {
-            color: #2c3e50;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-weight: 400;
+        .download-option {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
         }
 
-        .legal-links {
+        .download-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .download-option h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-button {
+            display: inline-block;
+            background: white;
+            color: var(--dark-green);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Legal Links */
+        .legal-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(44, 62, 80, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .legal-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark-text);
+        }
+
+        .legal-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
@@ -183,10 +384,10 @@
 
         .legal-link {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 1.5rem;
-            border-radius: 15px;
+            padding: 2rem;
+            border-radius: 20px;
             text-decoration: none;
-            color: #2c3e50;
+            color: var(--dark-text);
             transition: all 0.3s ease;
             border: 2px solid transparent;
             text-align: center;
@@ -194,67 +395,167 @@
 
         .legal-link:hover {
             background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-            border-color: #4CAF50;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.1);
+            border-color: var(--primary-green);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.15);
         }
 
         .legal-link h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: #2c3e50;
+            color: var(--dark-text);
         }
 
         .legal-link p {
-            color: #6c757d;
-            font-size: 0.9rem;
+            color: var(--light-text);
+            font-size: 0.95rem;
         }
 
+        /* Footer */
         footer {
             text-align: center;
-            margin-top: 3rem;
-            padding: 2rem 0;
-            color: #6c757d;
+            padding: 3rem 0;
+            color: var(--light-text);
             border-top: 1px solid rgba(44, 62, 80, 0.1);
         }
 
+        footer p {
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
             h1 {
                 font-size: 2.5rem;
             }
             
             .tagline {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
-            
-            .container {
-                padding: 1rem;
-            }
-            
-            .legal-links {
+
+            .main-grid,
+            .download-grid {
                 grid-template-columns: 1fr;
             }
+
+            .legal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .presentation-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Smooth Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card,
+        .presentation-hero,
+        .download-section,
+        .legal-section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Info Box Styles */
+        .info-box {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid;
+        }
+
+        .info-box.warning {
+            background: #fff3cd;
+            border-color: var(--accent-orange);
+        }
+
+        .info-box.info {
+            background: #e3f2fd;
+            border-color: var(--accent-blue);
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="Key-match-icon-key.jpg" alt="Key Match Logo" class="logo">
-            <h1>Key Match</h1>
-            <span class="beta-badge">🧪 Beta Testing</span>
-            <p class="tagline">Connect with Confidence</p>
-        </header>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-brand">🔑 Key Match</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#presentation">Presentation</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#legal">Legal</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <div class="main-content">
-            <div class="app-description">
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <img src="Key-match-icon-key.jpg" alt="Key Match Logo" class="logo">
+            <div class="beta-badge">🧪 Beta Testing</div>
+            <h1>Key Match</h1>
+            <p class="tagline">Connect with Confidence Through Keywords</p>
+        </section>
+
+        <!-- Presentation Hero Section -->
+        <section id="presentation" class="presentation-hero">
+            <div class="presentation-hero-content">
+                <h2>📊 Discover Key Match</h2>
+                <p>Explore our comprehensive presentation showcasing features, technology, and vision</p>
+                <a href="keymatch-presentation.pdf" target="_blank" class="presentation-button">
+                    View Full Presentation
+                </a>
+                <div class="presentation-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">Slides</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Tech</span>
+                        <span class="stat-label">Stack Overview</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">AI</span>
+                        <span class="stat-label">Powered Matching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2026</span>
+                        <span class="stat-label">Roadmap</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <div id="about" class="main-grid">
+            <div class="card">
                 <h2>About Key Match</h2>
-                <p>Key Match is a unique connection app that matches people based on keywords. Share your interests, hobbies, goals, or any keywords that represent who you are, and discover others who share similar keywords.</p>
+                <p>Key Match is a unique connection app that matches people based on <strong>keywords</strong>. Share your interests, hobbies, goals, or any keywords that represent who you are, and discover others who share similar keywords.</p>
                 
                 <p>Our keyword-based matching system helps you find connections through shared interests, experiences, or aspirations. Simply add keywords to your profile and let Key Match find people who share your keywords.</p>
                 
@@ -264,107 +565,112 @@
                     <li>Discover people with similar keywords</li>
                     <li>Simple and intuitive keyword profiles</li>
                     <li>Connect through shared interests</li>
+                    <li>AI-powered chat assistance</li>
                 </ul>
             </div>
 
-            <div class="cta-section">
-                <h2>Join Our Beta Program</h2>
-                <p style="background: #fff3cd; padding: 1rem; border-radius: 10px; border-left: 4px solid #ffc107; margin-bottom: 1.5rem;">
-                    <strong>🧪 Beta Testing Phase</strong><br>
+            <div class="card">
+                <h2>Join Our Beta</h2>
+                
+                <div class="info-box warning">
+                    <strong>🧪 Beta Testing Phase</strong>
                     Key Match is currently in private beta testing. Request access to be among the first to try our app!
+                </div>
+
+                <p style="margin: 1.5rem 0; color: var(--light-text);">
+                    To join our beta testing program, send us an email with your Google Play account:
                 </p>
-                <p style="margin-bottom: 1.5rem; color: #5a6c7d;">
-                    To join our beta testing program, send us an email with your Google Play account email address:
-                </p>
+                
                 <a href="mailto:keymatch@klasholmgren.se?subject=Key%20Match%20Beta%20Access%20Request&body=Hi%2C%0A%0AI%20would%20like%20to%20request%20access%20to%20the%20Key%20Match%20beta%20testing%20program.%0A%0AMy%20Google%20Play%20email%20address%20is%3A%20%5BYour%20Email%5D%0A%0AThank%20you!" 
-                   class="app-button">
+                   class="download-button" style="display: inline-block; margin-top: 0;">
                     📧 Request Beta Access
                 </a>
-                
-                <div style="margin: 25px 0; padding: 15px; background: #e3f2fd; border-radius: 10px; border-left: 4px solid #2196F3;">
-                    <p style="margin: 0 0 10px 0; color: #1976D2; font-weight: 600;">
-                        📲 Want to Try It Now?
-                    </p>
-                    
-                    <!-- Play Store Option -->
-                    <div style="margin-bottom: 20px;">
-                        <p style="margin: 0 0 10px 0; font-size: 0.9rem; color: #666;">
-                            <strong>Option 1:</strong> Install from Google Play Store (Recommended):
-                        </p>
-                        <a href="https://play.google.com/store/apps/details?id=com.keymatch.app" 
-                           target="_blank"
-                           class="app-button" 
-                           style="background: #4CAF50; font-size: 14px; padding: 10px 25px; margin: 5px 0;">
-                            🏪 Get it on Google Play
-                        </a>
-                        <p style="margin: 10px 0 0 0; font-size: 0.75rem; color: #666;">
-                            Automatic updates • Verified by Google • Easy installation
-                        </p>
-                    </div>
-                    
-                    <!-- Direct APK Option -->
-                    <div>
-                        <p style="margin: 0 0 10px 0; font-size: 0.9rem; color: #666;">
-                            <strong>Option 2:</strong> Direct APK download (Alternative):
-                        </p>
-                        <a href="keymatch-v200.apk" 
-                           class="app-button" 
-                           style="background: #2196F3; font-size: 14px; padding: 10px 25px; margin: 5px 0;">
-                            📥 Download APK (Android)
-                        </a>
-                        <p style="margin: 10px 0 0 0; font-size: 0.85rem; color: #666;">
-                            Version 134.8.0 (200) - Latest build • 41 MB
-                        </p>
-                        <p style="margin: 10px 0 0 0; font-size: 0.75rem; color: #999; font-style: italic;">
-                            Note: Enable "Install from unknown sources" in your device settings
-                        </p>
-                    </div>
-                </div>
-                
-                <p style="margin-top: 1.5rem; font-size: 0.95rem; color: #6c757d; line-height: 1.8;">
+
+                <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--light-text);">
                     <strong>What to include:</strong><br>
                     • Your Google Play email address<br>
                     • Why you're interested in Key Match<br>
                     • Any feedback you'd like to share
                 </p>
-                <p style="margin-top: 1rem; font-size: 0.85rem; color: #999;">
-                    We'll add you to our beta testers and you'll receive an invitation via Google Play
-                </p>
             </div>
         </div>
 
-        <div class="legal-section">
-            <h2>Legal Information</h2>
-            <p style="text-align: center; color: #6c757d; margin-bottom: 2rem;">
-                Please review our legal documents to understand your rights and our commitment to your safety and privacy.
+        <!-- Download Section -->
+        <section id="download" class="download-section">
+            <h2>📲 Get Key Match Now</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">
+                Choose your preferred installation method
+            </p>
+
+            <div class="download-grid">
+                <div class="download-option">
+                    <h3>🏪 Google Play Store</h3>
+                    <p style="margin: 1rem 0; opacity: 0.9;">Recommended for the best experience</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.keymatch.app" 
+                       target="_blank" class="download-button">
+                        Get it on Google Play
+                    </a>
+                    <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">
+                        ✓ Automatic updates<br>
+                        ✓ Verified by Google<br>
+                        ✓ Easy installation
+                    </p>
+                </div>
+
+                <div class="download-option">
+                    <h3>📥 Direct APK</h3>
+                    <p style="margin: 1rem 0; opacity: 0.9;">Alternative download method</p>
+                    <a href="keymatch-v203.apk" class="download-button">
+                        Download APK (Android)
+                    </a>
+                    <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">
+                        Version 134.8.0 (203)<br>
+                        Latest build • 41 MB<br>
+                        <em>Note: Enable "Unknown sources"</em>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legal Section -->
+        <section id="legal" class="legal-section">
+            <h2>📋 Legal Information</h2>
+            <p style="text-align: center; color: var(--light-text); margin-bottom: 2rem; font-size: 1.1rem;">
+                Please review our legal documents to understand your rights and our commitment to your safety and privacy
             </p>
             
-            <div class="legal-links">
+            <div class="legal-grid">
                 <a href="child-safety-standards.html" class="legal-link">
-                    <h3>Child Safety Standards</h3>
-                    <p>Our comprehensive standards against sexual abuse and exploitation of children</p>
+                    <h3>🛡️ Child Safety</h3>
+                    <p>Comprehensive standards against abuse and exploitation</p>
                 </a>
                 
                 <a href="privacy-policy.html" class="legal-link">
-                    <h3>Privacy Policy</h3>
-                    <p>How we collect, use, and protect your personal information</p>
+                    <h3>🔒 Privacy Policy</h3>
+                    <p>How we protect your personal information</p>
                 </a>
                 
                 <a href="terms.html" class="legal-link">
-                    <h3>Terms & Conditions</h3>
-                    <p>Terms of service and user agreement for Key Match</p>
+                    <h3>📜 Terms & Conditions</h3>
+                    <p>Terms of service and user agreement</p>
                 </a>
                 
                 <a href="policy.html" class="legal-link">
-                    <h3>App Policy</h3>
-                    <p>Additional policies and guidelines for using Key Match</p>
+                    <h3>📋 App Policy</h3>
+                    <p>Additional policies and guidelines</p>
                 </a>
             </div>
-        </div>
+        </section>
 
+        <!-- Footer -->
         <footer>
             <p>Built with ❤️ for meaningful connections</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                <a href="mailto:keymatch@klasholmgren.se" style="color: var(--primary-green); text-decoration: none;">
+                    keymatch@klasholmgren.se
+                </a>
+            </p>
         </footer>
     </div>
 </body>
-</html> 
+</html>
