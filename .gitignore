@@ -1,0 +1,11 @@
+# Ignore old APK versions (only keep the latest)
+keymatch-v[0-9][0-9][0-9].apk
+!keymatch-v203.apk
+
+# Ignore server deployment scripts (not needed for GitHub Pages)
+deploy-to-server.sh
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
