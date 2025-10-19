@@ -2,6 +2,10 @@
 keymatch-v[0-9][0-9][0-9].apk
 !keymatch-v205.apk
 
+# Ignore old AAB versions (only keep the latest)
+keymatch-v[0-9][0-9][0-9].aab
+!keymatch-v205.aab
+
 # Ignore server deployment scripts (not needed for GitHub Pages)
 deploy-to-server.sh
 
